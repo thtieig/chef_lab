@@ -26,47 +26,47 @@ Once completed, move the admin.pem to the .chef directory.
 `cp secrets/admin.pem ../.chef/`
 
 Now, get the SSL certs from the Chef Server:
-`knife ssl fetch
-knife ssl verify
-knife ssl check`
+`knife ssl fetch`
+`knife ssl verify`
+`knife ssl check`
 
 
 You can now use my other repository for testing Chef:
 
-`cd ../cookbooks/
-git clone git@github.com:thtieig/chef_exercise.git
-mv chef_exercise/ lamp_centos7`
+`cd ../cookbooks/`
+`git clone git@github.com:thtieig/chef_exercise.git`
+`mv chef_exercise/ lamp_centos7`
 
 
 Now, you can upload the cookbook to the Chef server
 
-`knife cookbook upload lamp_centos7
-knife cookbook list`
+`knife cookbook upload lamp_centos7`
+`knife cookbook list`
 
 
 And bootstrap the 2 nodes from your workstation using these commands:
-`knife bootstrap localhost --ssh-port 2200 --ssh-user vagrant --sudo --identity-file /home/user/chef_exercise/chef-server/.vagrant/machines/node1-centos/virtualbox/private_key --node-name node1-centos
+`knife bootstrap localhost --ssh-port 2200 --ssh-user vagrant --sudo --identity-file /home/user/chef_exercise/chef-server/.vagrant/machines/node1-centos/virtualbox/private_key --node-name node1-centos`
 
-knife bootstrap localhost --ssh-port 2201 --ssh-user vagrant --sudo --identity-file /home/user/chef_exercise/chef-server/.vagrant/machines/node2-centos/virtualbox/private_key --node-name node2-centos`
+`knife bootstrap localhost --ssh-port 2201 --ssh-user vagrant --sudo --identity-file /home/user/chef_exercise/chef-server/.vagrant/machines/node2-centos/virtualbox/private_key --node-name node2-centos`
 
 And verify
 
-`knife node list
+`knife node list`
 
-knife node show node1-centos
-knife node show node2-centos`
+`knife node show node1-centos`
+`knife node show node2-centos`
 
 
 Time now to upload the roles as well:
 
-`cd lamp_centos7/
-knife role from file roles/web.json
-knife role from file roles/db.json`
+`cd lamp_centos7/`
+`knife role from file roles/web.json`
+`knife role from file roles/db.json`
 
 ...and apply web to node1, and db to node2:
 
-`knife node run_list set node1-centos "role[web]"
-knife node run_list set node2-centos "role[db]"`
+`knife node run_list set node1-centos "role[web]"`
+`knife node run_list set node2-centos "role[db]"`
 
 and verify - as usual:
 
