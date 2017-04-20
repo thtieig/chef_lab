@@ -8,23 +8,23 @@ So, what this repo does?
 It creates a structure for a Chef lab, including some configuration files.
 
 The lab will be made by:
-1. Chef-server
-2. node1-centos
-3. node2-centos
+1. *Chef-server*
+2. *node1-centos*
+3. *node2-centos*
 
 To use this you need to have the following installed on your machine (I'm running this on Ubuntu 16.04):
-1. Chef DK
-2. Vagrant
-3. Virtualbox
+1. [Chef DK](https://downloads.chef.io/chefdk)
+2. Vagrant - `apt install vagrant`
+3. Virtualbox - `apt install virtualbox`
 
-Once installed, clone the repository, get into *chef_exercise* folder and run the following:
+Once all is installed, clone the repository, get into *chef_exercise* folder and run the following:
 ```
 cd chef-server
 vagrant up
 ```
-This will take a while and it will create the 3 virtual machine on Virtualbox. Also, it will create a folder called *secrets* where you will find the RSA key for the Chef server.
+This will take a while and it will create the 3 virtual machine on Virtualbox, headless. Also, it will create a folder called *secrets* where you will find the RSA key for the Chef server.
 
-Once completed, move the admin.pem to the .chef directory.
+Once completed, move the *admin.pem* to the *.chef* directory.
 `cp secrets/admin.pem ../.chef/`
 
 Now, get the SSL certs from the Chef Server:
@@ -41,7 +41,7 @@ git clone git@github.com:thtieig/chef_exercise.git
 mv chef_exercise/ lamp_centos7
 ```
 
-Now, you can upload the cookbook to the Chef server
+Now, you can upload the cookbook to the Chef server:
 ```
 knife cookbook upload lamp_centos7
 knife cookbook list
@@ -53,7 +53,7 @@ knife bootstrap localhost --ssh-port 2200 --ssh-user vagrant --sudo --identity-f
 
 knife bootstrap localhost --ssh-port 2201 --ssh-user vagrant --sudo --identity-file /home/user/chef_exercise/chef-server/.vagrant/machines/node2-centos/virtualbox/private_key --node-name node2-centos
 ```
-And verify
+And verify:
 ```
 knife node list
 
