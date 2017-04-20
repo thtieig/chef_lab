@@ -87,7 +87,7 @@ knife ssh localhost --ssh-port 2201 'sudo chef-client' --manual-list --ssh-user 
 
 In theory, all should work ;-)
 
-For further information, check  [learn Chef website](https://learn.chef.io) and [my blog post here] (https://blog.tian.it/chef-notes/).
+For further information, check  [learn Chef website](https://learn.chef.io) and [my blog post here](https://blog.tian.it/chef-notes/).
 
 Happy Chef'ing!
 
