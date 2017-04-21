@@ -25,7 +25,9 @@ vagrant up
 This will take a while and it will create the 3 virtual machine on Virtualbox, headless. Also, it will create a folder called *secrets* where you will find the RSA key for the Chef server.
 
 Once completed, move the *admin.pem* to the *.chef* directory.
-`cp secrets/admin.pem ../.chef/`
+```
+cp secrets/admin.pem ../.chef/
+```
 
 Now, get the SSL certs from the Chef Server:
 ```
